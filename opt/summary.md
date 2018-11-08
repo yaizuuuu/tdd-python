@@ -92,3 +92,33 @@ private class FullFile extends File {
 
 オブジェクトの変数までテストしたくなるときは、設計を改善する機会である。
 
+## 30章
+
+### Pluggable Object パターン
+
+特定の条件により移譲先のオブジェクトを分ける。
+移譲先のオブジェクトは同じインターフェースを継承しており、呼び出しは変わらないが、振る舞いが異なる。
+ポリモーフィズムを利用したパターンである。
+
+```java
+class Test {
+    Figure selected;
+    SelectionMode mode;
+    
+    public void mouseDown() {
+        selected  = findFigure();
+        if (selected != null)
+            mode = new SingleSelection(selected);
+        else
+            mode = new MultipleSelection();
+    }
+    
+    public void mouseMove() {
+        mode.mouseMove();
+    }
+    
+    public void mouseUp() {
+        mode.mouseUp();
+    }
+}
+```
