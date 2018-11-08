@@ -67,7 +67,7 @@ TODOリストを充実させるプロセスは以下のような手順になる�
 例外をテストするパターン。
 サンプルのコードはファイルシステムが限界容量まで達しているときにアプリケーションに何が起きるかをテストしている。
 
-```Java
+```java
 private class FullFile extends File {
     public FullFile(String path) {
         super(path);
@@ -79,3 +79,16 @@ private class FullFile extends File {
 }
 
 ```
+
+## 29章
+
+### アサーション
+
+テストは具体的に書く。
+
+×：`asserTrue(rectangle.area() != 0)`
+
+◯：`assertEquals(rectangle.area(), 50)`
+
+オブジェクトの変数までテストしたくなるときは、設計を改善する機会である。
+
